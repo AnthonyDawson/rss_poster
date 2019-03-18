@@ -1,0 +1,38 @@
+<channel>
+	<name>NIBIB-NIH NEWS</name>
+	<frequency>hourly</frequency>														<!-- Interval between RSS feed checks 				-->
+	<start_offset>3150</start_offset>													<!-- Offeset Time from activtion to run -->
+	<debug>no</debug>																	<!-- generate article.html file 					-->
+	<mode>simple</mode>																	<!-- simple mode just displays RSS info rip mode pulls the whole story -->
+	<stream>
+		<rss_url>https://www.nibib.nih.gov/rss</rss_url>								<!-- The url to the RSS feed described in here 			-->
+		<title_tag>title</title_tag>													<!-- The tag in the feed used to get the title 			-->
+		<description_tag>description</description_tag>									<!-- The tag in the feed used to get the description	--> 
+		<item_link_tag>link</item_link_tag>												<!-- The tag in the feed to get the story to rip		-->
+		<pub_date_tag>pubDate</pub_date_tag>											<!-- The tag in the feed to get the publication date	-->
+		<media>thumbnail</media>
+		<alt_media>																		<!-- If no media found try get one out of the article 	-->
+			<image>//img[@class="media-element file-default media-float-right"]/@src</image>
+			<image1>//img[@class="media-element file-default"]/@src</image1>
+			<image_scan>//*[@id="block-system-main"]/*//img</image_scan>				<!-- use this Xpath as th start point for img scanning -->
+		</alt_media>
+	</stream>
+	<requirements>
+	<!--
+		<must_include_one>Thai, Thailand</must_include_one>
+		<must_include_all></must_include_all>
+		<must_exclude>Royal Family</must_exclude>
+	-->
+	</requirements>
+	<post>
+		<image>
+			<copy_locally>no</copy_locally>													<!-- yes = copies the image locally no = uses the source url -->
+			<options>search_article, search_rss, no_post_without</options>					<!-- Take the values no_image no_post_without, use_alt, search_article, search_rss -->
+			<feature_image>yes</feature_image>
+		</image>
+
+		<category>biomedical, featured_random</category>									<!-- featured_random will randomy feature an article -->
+		<source_string>Read more</source_string>
+	</post>
+</channel>
+

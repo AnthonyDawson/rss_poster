@@ -1,0 +1,48 @@
+<channel>
+	<name>Clean Technica</name>
+	<frequency>hourly</frequency>														<!-- Interval between RSS feed checks 				-->
+	<freequency>H2Q</freequency>														<!-- Interval between RSS feed checks 				-->
+	<start_offset>2250</start_offset>													<!-- Offset Time from activtion to run -->
+	<debug>no</debug>																	<!-- generate article.html file 					-->
+	<mode>simple</mode>																	<!-- simple mode just displays RSS info rip mode pulls the whole story -->
+	<stream>
+		<rss_url>http://cleantechnica.com/feed/</rss_url>				<!-- The url to the RSS feed described in here 			-->
+		<title_tag>title</title_tag>													<!-- The tag in the feed used to get the title 			-->
+		<description_tag>description</description_tag>									<!-- The tag in the feed used to get the description	--> 
+		<item_link_tag>link</item_link_tag>												<!-- The tag in the feed to get the story to rip		-->
+		<pub_date_tag>pubDate</pub_date_tag>											<!-- The tag in the feed to get the publication date	-->
+		<media>thumbnail</media>
+		<alt_media>																		<!-- If no media found try get one out of the article 	-->
+			<priority>body, description</priority>										<!-- allowed values body = article body, description = rss feed -->
+			<image>//*[@id="omc-full-article"]/p[3]/a/@href</image>
+			<image1>//*[@id="omc-full-article"]/table[1]/tbody/tr/td/img</image1>
+			<caption1>//*[@id="omc-full-article"]/table[1]/tbody/tr/td/em</caption1>
+			<image2>//*[@id="omc-full-article"]/p[4]/a/img</image2>
+			<image3>//*[@id="omc-full-article"]/p[3]/a/img</image3>
+			<image4>//*[@id="attachment_161875"]/a/img</image4>
+			<image5>//*[@id="attachment_161876"]/a/img</image5>
+			<!--<image6>//*[@id="omc-full-article"]/p[5]/a/img</image6>-->
+			<image_scan>//*[@id="omc-full-article"]/*//img</image_scan>
+		</alt_media>
+	</stream>
+	<requirements>
+	<!--
+		<must_include_one>Thai, Thailand</must_include_one>
+		<must_include_all></must_include_all>
+		<must_exclude>Royal Family</must_exclude>
+	-->
+	</requirements>
+	<post>
+		<image>
+			<copy_locally>no</copy_locally>													<!-- yes = copies the image locally no = uses the source url -->
+			<use_image>2</use_image>														<!-- image to use 1st or 2nd or 3rd etc. -->
+			<options>search_article, search_rss, no_post_without</options>									<!-- Thake the values no_image no_post_without, use_alt, search_article, search_rss -->
+			<feature_image>yes</feature_image>
+		</image>
+		<category>featured_random, energy</category>										<!-- featured_random will randomy feature an article -->
+		<link>
+			<SEOfollow>no</SEOfollow>
+			<source_string>Read more</source_string>
+		</link>
+	</post>
+</channel>

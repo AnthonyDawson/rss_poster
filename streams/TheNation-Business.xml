@@ -1,0 +1,44 @@
+<channel>
+	<name>The Nation - Business</name>
+	<mode>rip</mode>
+	<frequency>Q3H</frequency>													<!-- Interval between RSS feed runs  Q1H to Q24H 		-->
+	<start_offset>3600</start_offset>											<!-- Offeset Time from activtion to run -->
+	<debug>no</debug>															<!-- generate article.html file 					-->
+	<stream>
+		<rss_url>http://www.nationmultimedia.com/rss/business</rss_url>			<!-- The url to the RSS feed described in here 			-->
+		<title_tag>title</title_tag>											<!-- The tag in the feed used to get the title 			-->
+		<description_tag>description</description_tag>							<!-- The tag in the feed used to get the description	--> 
+		<item_link_tag>link</item_link_tag>										<!-- The tag in the feed to get the story to rip		-->
+		<pub_date_tag>pubDate</pub_date_tag>									<!-- The tag in the feed to get the publication date	-->
+	</stream>
+	<xpath>																		<!-- xpaths to all the items in the document 		-->
+		<headline>//h1[@itemprop="headline"]</headline>
+		<date>//*[@id="detail-page"]/div[1]/div[2]/div[3]/div[1]/article/header/p[1]/i</date>
+		<author>//*[@id="detail-page"]/div[1]/div[2]/div[3]/div[1]/article/header/p[2]</author>
+		<excerpt>//*[@id="detail-page"]/div[1]/div[2]/div[3]/div[1]/article/section/h2</excerpt>
+		<article>//div[@itemprop="articlebody"]/p</article>
+		<image>//*[@id="detail-page"]/div[1]/div[2]/div[3]/div[1]/div[1]/div[1]/img</image>
+		<caption>//*[@id="detail-page"]/div[1]/div[2]/div[3]/div[1]/div[1]/div[2]</caption>
+		<paragraphs>1</paragraphs>												<!-- Number of paragraphs or 0 for all -->
+	</xpath>
+	<post>
+		<!-- <allowed_authors>Bloomerg, Reuters, France-Presse</allowed_authors> -->
+		<exclude_authors></exclude_authors>
+		<source_heading>publication</source_heading>							<!-- publication | all Some times all messes up the heading -->
+		<!--
+		<requirements>
+			<must_include_one>Thai, Thailand</must_include_one>
+			<must_include_all></must_include_all>
+			<must_exclude>Royal Family</must_exclude>
+		</requirements>
+		-->
+		<image>
+			<use_image>1</use_image>											<!-- if several images are available chose this one if $n < use_image then $n will be used -->
+			<copy_locally>no</copy_locally>										<!-- yes = copies the image locally no = inserts the url to the remote image  in the article -->
+			<feature_image>yes</feature_image>
+			<options>no_post_without</options>
+		</image>
+		<category>featured_random, finance</category>
+		<source_string>Read the article here</source_string>
+	</post>
+</channel>
