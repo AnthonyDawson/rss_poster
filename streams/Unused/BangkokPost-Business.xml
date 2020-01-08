@@ -1,0 +1,46 @@
+<channel>
+	<name>Bangkok Post</name>
+	<mode>rip</mode>
+	<freequency>hourly</freequency>												<!-- Interval between RSS feed checks 				-->
+	<debug>yes</debug>															<!-- generate article.html file 					-->
+	<stream>
+		<rss_url>https://www.bangkokpost.com/rss/data/business.xml</rss_url>	<!-- The url to the RSS feed described in here 			-->
+		<title_tag>title</title_tag>											<!-- The tag in the feed used to get the title 			-->
+		<description_tag>description</description_tag>							<!-- The tag in the feed used to get the description	--> 
+		<item_link_tag>link</item_link_tag>										<!-- The tag in the feed to get the story to rip		-->
+		<pub_date_tag>pubDate</pub_date_tag>									<!-- The tag in the feed to get the publication date	-->
+	</stream>
+	<xpath>																			<!-- xpaths to all the items in the document 		-->
+		<headline>/html/body/section/article/div[1]/header/h1</headline>
+		<date>/html/body/section/article/div[1]/header/ul/li[1]/span</date>
+		<author>/html/body/section/article/div[1]/header/ul/li[2]/a</author>
+		<excerpt>/html/body/section/article/div[1]/div/p[1]</excerpt>
+		<article>//div[@class="articleContents"]/p</article>
+		<image>/html/body/section/article/div[1]/div/div[2]/img</image>
+		<image1>/html/body/section/article/div[1]/div/div[1]/img</image1>
+		<!--<image>/html/body/section/article/div[1]/div/div[3]/img@src</image> -->
+		<caption>/html/body/section/article/div[1]/div/div[1]/p</caption>
+		<caption1>/html/body/section/article/div[1]/div/div[1]/p</caption1>
+		<!-- <caption>/html/body/section/article/div[1]/div/div[3]/p</caption> -->
+		<paragraphs>1</paragraphs>													<!-- Number of paragraphs or 0 for all -->
+	</xpath>
+	<post>
+		<exclude_authors></exclude_authors>											<!-- list of authors we don't want to accept -->
+		<!-- <allowed_authors>Bloomerg, Reuters, France-Presse</allowed_authors> -->			<!-- list of authors we want to accept		 -->
+		<tags>
+			<apply>literal</apply>													<!-- dynamic, none literal					 -->
+			<tag_values>thainewsnet, article</tag_values>							<!-- dynamic, none literal-->
+		</tags>
+		<!--
+		<requirements>
+			<must_include_one>Thai, Thailand</must_include_one>
+			<must_include_all></must_include_all>
+			<must_exclude>Royal Family</must_exclude>
+		</requirements>
+		-->
+		<category>business</category>
+		<feature_image>yes</feature_image>
+		<source_string>Read the article here</source_string>
+	</post>
+	
+</channel>

@@ -83,12 +83,15 @@ class RSS_To_Post_Poster {
 				//error_log(print_r($rf, true));
 				$args = array();
 				array_push($args, $fn);
-			if (!wp_schedule_event($rf->st, $rf->fr, 'rss_poster_event', $args)) {
-				error_log("Failed to set: event for: ". basename($fn));
-			}
-				error_log("Added: ". basename($fn));
+				if (!wp_next_scheduled('rss_poster_event')) {
+					if (!wp_schedule_event($rf->st, $rf->fr, 'rss_poster_event', $args)) {
+						error_log("Failed to set: event for: ". basename($fn));
+					}
+				} else {
+					error_log("Added: ". basename($fn));
+                }
 			} catch (Exception $e) {
-				error_log($fn. " Invalid XML detected or missing <frequency> tag");
+				error_log($fn. " Invalid XML detected or missing <feequency> tag");
 			}
 		}
 	}

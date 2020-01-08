@@ -1,0 +1,47 @@
+<channel>
+	<name>Khaosod English</name>
+	<mode>rip</mode>
+	<freequency>hourly</freequency>												<!-- Interval between RSS feed checks 				-->
+	<debug>yes</debug>															<!-- generate article.html file 					-->
+	<stream>
+		<rss_url>http://www.khaosodenglish.com/feed/</rss_url>	<!-- The url to the RSS feed described in here 			-->
+		<title_tag>title</title_tag>											<!-- The tag in the feed used to get the title 			-->
+		<description_tag>description</description_tag>							<!-- The tag in the feed used to get the description	--> 
+		<item_link_tag>link</item_link_tag>										<!-- The tag in the feed to get the story to rip		-->
+		<pub_date_tag>pubDate</pub_date_tag>									<!-- The tag in the feed to get the publication date	-->
+	</stream>
+	<xpath>																		<!-- xpaths to all the items in the document 		-->
+		<headline>//*[contains(@class, 'entry-title')]</headline>
+		<date>/html/body/section/article/div[1]/header/ul/li[1]/span</date>
+		<author>//*[@id="post-1464830457"]/div[1]/header/div/div/a</author>
+		<excerpt>//*[@id="post-1464830457"]/div[3]/p[1]</excerpt>
+		<article>//*[@id="post-1464830457"]/div[3]/p[1]</article>
+		
+		<image>//*[@id="post-1464830457"]/div[3]/div[1]/figure/img</image>
+		<caption>//*[@id="post-1464830457"]/div[3]/div[1]/figure/figcaption</caption>
+		<paragraphs>1</paragraphs>													<!-- Number of paragraphs or 0 for all -->
+	</xpath>
+	<post>
+		<exclude_authors></exclude_authors>											<!-- list of authors we don't want to accept -->
+		<source_heading>all</source_heading>										<!-- publication | all N.B. Sometimes all messes up the heading -->
+		<!-- <allowed_authors>Bloomerg, Reuters, France-Presse</allowed_authors> -->			<!-- list of authors we want to accept		 -->
+		<tags>
+			<apply>literal</apply>													<!-- dynamic, none literal					 -->
+			<tag_values>thainewsnet, article</tag_values>							<!-- dynamic, none literal-->
+		</tags>
+		<!--
+		<requirements>
+			<must_include_one>Thai, Thailand</must_include_one>
+			<must_include_all></must_include_all>
+			<must_exclude>Royal Family</must_exclude>
+		</requirements>
+		-->
+      	<image>
+			<copy_locally>no</copy_locally>												<!-- yes = copies the image locally no = uses the source url -->
+		</image>
+		<category>general-news</category>
+		<feature_image>yes</feature_image>
+		<source_string>Read the article here</source_string>
+	</post>
+	
+</channel>

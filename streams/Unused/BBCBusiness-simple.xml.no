@@ -1,0 +1,33 @@
+<channel>
+	<name>BBC News - Business</name>
+	<freequency>hourly</freequency>														<!-- Interval between RSS feed checks 				-->
+	<debug>yes</debug>																	<!-- generate article.html file 					-->
+	<mode>simple</mode>																	<!-- simple mode just displays RSS info rip mode pulls the whole story -->
+	<stream>
+		<rss_url>https://feeds.bbci.co.uk/news/video_and_audio/business/rss.xml</rss_url>				<!-- The url to the RSS feed described in here 			-->
+		<title_tag>title</title_tag>													<!-- The tag in the feed used to get the title 			-->
+		<description_tag>description</description_tag>									<!-- The tag in the feed used to get the description	--> 
+		<item_link_tag>link</item_link_tag>												<!-- The tag in the feed to get the story to rip		-->
+		<pub_date_tag>pubDate</pub_date_tag>											<!-- The tag in the feed to get the publication date	-->
+		<media>thumbnail</media>
+        																				<!-- If no media found try get one out of the article 	-->
+  <!--      
+		<alt_media>
+			<image>/html/body/section/article/div[1]/div/div[1]/img/@src</image>
+		</alt_media>
+  -->
+	</stream>
+	<requirements>
+	<!--
+		<must_include_one>Thai, Thailand</must_include_one>
+		<must_include_all></must_include_all>
+		<must_exclude>Royal Family</must_exclude>
+	-->
+	</requirements>
+	<post>
+		<feature_image>yes</feature_image>
+		<image_options>no_post_without</image_options>							<!-- Thake the values no_post_without, use_alt, search_article -->
+		<category>finance, featured</category>
+		<source_string>Read more</source_string>
+	</post>
+</channel>
